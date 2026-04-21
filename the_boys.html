@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet The Boys Feel Loved</title>
+    <link rel="icon" href="assets/img/bfl.jpeg" type="image/jpeg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/style.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bflYellow: '#F9D056',
+                        bflRed: '#F03E3E',
+                        bflDark: '#2D2D2D',
+                    },
+                    fontFamily: {
+                        display: ['Bangers', 'cursive'],
+                        body: ['Nunito', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-body bg-yellow-50 text-bflDark overflow-x-hidden">
+
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-sm border-b-2 border-black shadow-md" id="navbar">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <img src="assets/img/bfl.jpeg" alt="Logo BFL" class="h-12 w-12 rounded-full border-2 border-bflRed shadow-sm">
+                    <span class="font-display text-3xl tracking-widest text-bflRed drop-shadow-md"> Boys Feel Loved</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8 font-bold">
+                        <a href="index.html#home" class="hover:text-bflRed transition-colors">Home</a>
+                        <a href="index.html#gallery" class="hover:text-bflRed transition-colors">Galeri</a>
+                        <a href="index.html#stories" class="hover:text-bflRed transition-colors">Kisah Seru</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-32 pb-16 bg-bflYellow bg-opacity-20 pattern-dots border-b-8 border-black">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h1 class="font-display text-6xl md:text-8xl text-bflRed drop-shadow-[4px_4px_0_rgba(0,0,0,1)] mb-4 transform -rotate-2">
+                FULL SQUAD
+            </h1>
+            <p class="text-xl md:text-2xl font-bold text-gray-800 bg-white inline-block px-4 py-2 border-4 border-black shadow-[4px_4px_0_rgba(0,0,0,1)]">
+                Inilah para legenda hidup!!!
+            </p>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            
+            <div class="flex flex-wrap justify-center gap-8">
+                <div class="w-full sm:w-64 member-card group relative bg-blue-50 border-4 border-black rounded-xl p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300">
+                    <div class="aspect-square w-full overflow-hidden rounded-lg border-2 border-black mb-4 bg-gray-200">
+                        <img src="assets/img/bading.jpg" alt="Thomas Aldi" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-xl text-center mb-1">Thomas Aldi</h3>
+                    <p class="text-center text-sm text-gray-600 italic">"Tukang bikin onar pas rapat"</p>
+                </div>
+
+                <div class="w-full sm:w-64 member-card group relative bg-green-50 border-4 border-black rounded-xl p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300">
+                    <div class="aspect-square w-full overflow-hidden rounded-lg border-2 border-black mb-4 bg-gray-200">
+                        <img src="assets/img/AJUY.JPG" alt="Azhar Havis" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-xl text-center mb-1">Azhar Havis</h3>
+                    <p class="text-center text-sm text-gray-600 italic">"Orang PACET"</p>
+                </div>
+                
+                <div class="w-full sm:w-64 member-card group relative bg-red-50 border-4 border-black rounded-xl p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300">
+                    <div class="aspect-square w-full overflow-hidden rounded-lg border-2 border-black mb-4 bg-gray-200">
+                        <img src="assets/img/reksi.jpg" alt="Reksi Zender Perdinan" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-xl text-center mb-1">Reksi Zender Perdinan</h3>
+                    <p class="text-center text-sm text-gray-600 italic">"Tukang Reparasi"</p>
+                </div>
+
+                <div class="w-full sm:w-64 member-card group relative bg-blue-100 border-4 border-black rounded-xl p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300">
+                    <div class="aspect-square w-full overflow-hidden rounded-lg border-2 border-black mb-4 bg-gray-200">
+                        <img src="assets/img/padjrin.jpg" alt="Padjrin Fauzi" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-xl text-center mb-1">Padjrin Fauzi</h3>
+                    <p class="text-center text-sm text-gray-600 italic">"Jelema tukang nge PRANK!"</p>
+                </div>
+
+                <div class="w-full sm:w-64 member-card group relative bg-yellow-50 border-4 border-black rounded-xl p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300">
+                    <div class="aspect-square w-full overflow-hidden rounded-lg border-2 border-black mb-4 bg-gray-200">
+                        <img src="assets/img/laksamana.jpg" alt="Laksamana Raihan" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-xl text-center mb-1">Laksamana Raihan Nusabagja</h3>
+                    <p class="text-center text-sm text-gray-600 italic">"Panglima Tempur"</p>
+                </div>
+
+                <div class="w-full sm:w-64 member-card group relative bg-orange-50 border-4 border-black rounded-xl p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300">
+                    <div class="aspect-square w-full overflow-hidden rounded-lg border-2 border-black mb-4 bg-gray-200">
+                        <img src="assets/img/hardian.jpg" alt="Hardian Nurdin" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-xl text-center mb-1">Hardian Nurdin</h3>
+                    <p class="text-center text-sm text-gray-600 italic">"Aktivis yang miris"</p>
+                </div>
+
+                <div class="w-full sm:w-64 member-card group relative bg-red-100 border-4 border-black rounded-xl p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300">
+                    <div class="aspect-square w-full overflow-hidden rounded-lg border-2 border-black mb-4 bg-gray-200">
+                        <img src="assets/img/hardian.jpg" alt="Jek" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-xl text-center mb-1">Jek</h3>
+                    <p class="text-center text-sm text-gray-600 italic">"Semoga Sukses"</p>
+                </div>
+
+                <div class="w-full sm:w-64 member-card group relative bg-green-50 border-4 border-black rounded-xl p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300">
+                    <div class="aspect-square w-full overflow-hidden rounded-lg border-2 border-black mb-4 bg-gray-200">
+                        <img src="assets/img/hardian.jpg" alt="Leo Restu" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-xl text-center mb-1">Leo Restu S.R.N</h3>
+                    <p class="text-center text-sm text-gray-600 italic">"Lelaki idaman"</p>
+                </div>
+
+                <div class="w-full sm:w-64 member-card group relative bg-purple-50 border-4 border-black rounded-xl p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300">
+                    <div class="aspect-square w-full overflow-hidden rounded-lg border-2 border-black mb-4 bg-gray-200">
+                        <img src="assets/img/hardian.jpg" alt="Restu Rahmat Fajri" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-xl text-center mb-1">Restu Rahmat Fajri</h3>
+                    <p class="text-center text-sm text-gray-600 italic">"Pria Kaprodi"</p>
+                </div>
+
+                <div class="w-full sm:w-64 member-card group relative bg-teal-50 border-4 border-black rounded-xl p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300">
+                    <div class="aspect-square w-full overflow-hidden rounded-lg border-2 border-black mb-4 bg-gray-200">
+                        <img src="assets/img/images (9).jpg" alt="Rohman Fajar" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-xl text-center mb-1">Rohman Fajar Muhamad</h3>
+                    <p class="text-center text-sm text-gray-600 italic">"Raja Remi"</p>
+                </div>
+
+                <div class="w-full sm:w-64 member-card group relative bg-pink-50 border-4 border-black rounded-xl p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300">
+                    <div class="aspect-square w-full overflow-hidden rounded-lg border-2 border-black mb-4 bg-gray-200">
+                        <img src="assets/img/abie.JPG" alt="Abie Rafdi" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-xl text-center mb-1">M. Abie Rafdi Fauzi</h3>
+                    <p class="text-center text-sm text-gray-600 italic">"Terkenal dengan Abrag nya"</p>
+                </div>
+
+                <div class="w-full sm:w-64 member-card group relative bg-pink-50 border-4 border-black rounded-xl p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300">
+                    <div class="aspect-square w-full overflow-hidden rounded-lg border-2 border-black mb-4 bg-gray-200">
+                        <img src="assets/img/abie.JPG" alt="Abie Rafdi" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-xl text-center mb-1">M. Ghozali Nur Hidayatullah</h3>
+                    <p class="text-center text-sm text-gray-600 italic">"Sang Penjaga Malam"</p>
+                </div>
+
+                <div class="w-full sm:w-64 member-card group relative bg-gray-100 border-4 border-black rounded-xl p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300">
+                    <div class="aspect-square w-full overflow-hidden rounded-lg border-2 border-black mb-4 bg-gray-300 flex items-center justify-center">
+                        <span class="font-display text-6xl text-gray-400">?</span>
+                    </div>
+                    <h3 class="font-bold text-xl text-center mb-1">Raafi Syarahil Azhar</h3>
+                    <p class="text-center text-sm text-gray-600 italic">HIJI HIJI, CAPE</p>
+                </div>
+
+                <div class="w-full sm:w-64 member-card group relative bg-pink-50 border-4 border-black rounded-xl p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300">
+                    <div class="aspect-square w-full overflow-hidden rounded-lg border-2 border-black mb-4 bg-gray-200">
+                        <img src="assets/img/hardian.jpg" alt="Abie Rafdi" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-xl text-center mb-1">Riyan Hidayat</h3>
+                    <p class="text-center text-sm text-gray-600 italic">"Juara Silat dari Sumedang"</p>
+                </div>
+
+                <div class="w-full sm:w-64 member-card group relative bg-pink-50 border-4 border-black rounded-xl p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300">
+                    <div class="aspect-square w-full overflow-hidden rounded-lg border-2 border-black mb-4 bg-gray-200">
+                        <img src="assets/img/sandi.JPG" alt="Abie Rafdi" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-xl text-center mb-1">Sandi Rosandi</h3>
+                    <p class="text-center text-sm text-gray-600 italic">"Orang Lembang"</p>
+                </div>
+
+                <div class="w-full sm:w-64 member-card group relative bg-gray-100 border-4 border-black rounded-xl p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300">
+                    <div class="aspect-square w-full overflow-hidden rounded-lg border-2 border-black mb-4 bg-gray-300 flex items-center justify-center">
+                        <span class="font-display text-6xl text-gray-400">?</span>
+                    </div>
+                    <h3 class="font-bold text-xl text-center mb-1">Rahmat Hidayat</h3>
+                    <p class="text-center text-sm text-gray-600 italic">he he he he</p>
+                </div>
+
+                <div class="w-full sm:w-64 member-card group relative bg-yellow-50 border-4 border-black rounded-xl p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300">
+                    <div class="aspect-square w-full overflow-hidden rounded-lg border-2 border-black mb-4 bg-gray-200">
+                        <img src="assets/img/laksamana.jpg" alt="Laksamana Raihan" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-xl text-center mb-1">Ridwan Saobandri</h3>
+                    <p class="text-center text-sm text-gray-600 italic">"C'Bungsu"</p>
+                </div>
+
+                <div class="w-full sm:w-64 member-card group relative bg-red-100 border-4 border-black rounded-xl p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300">
+                    <div class="aspect-square w-full overflow-hidden rounded-lg border-2 border-black mb-4 bg-gray-200">
+                        <img src="assets/img/hardian.jpg" alt="Jek" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-xl text-center mb-1">Ridwan</h3>
+                    <p class="text-center text-sm text-gray-600 italic">"Beben"</p>
+                </div>
+
+                <div class="w-full sm:w-64 member-card group relative bg-gray-100 border-4 border-black rounded-xl p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300">
+                    <div class="aspect-square w-full overflow-hidden rounded-lg border-2 border-black mb-4 bg-gray-300 flex items-center justify-center">
+                        <span class="font-display text-6xl text-gray-400">?</span>
+                    </div>
+                    <h3 class="font-bold text-xl text-center mb-1">Chris Hendry Choong</h3>
+                    <p class="text-center text-sm text-gray-600 italic">"ACONG, ACENG"</p>
+                </div>
+
+                <div class="w-full sm:w-64 member-card group relative bg-green-50 border-4 border-black rounded-xl p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300">
+                    <div class="aspect-square w-full overflow-hidden rounded-lg border-2 border-black mb-4 bg-gray-200">
+                        <img src="assets/img/laksamana.jpg" alt="Laksamana Raihan" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-xl text-center mb-1">Cahya Purnama Aji</h3>
+                    <p class="text-center text-sm text-gray-600 italic">"Calon RW"</p>
+                </div>
+
+                <div class="w-full sm:w-64 member-card group relative bg-green-50 border-4 border-black rounded-xl p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300">
+                    <div class="aspect-square w-full overflow-hidden rounded-lg border-2 border-black mb-4 bg-gray-200">
+                        <img src="assets/img/sultan.jpeg" alt="Laksamana Raihan" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-xl text-center mb-1">Arya Sultansyah</h3>
+                    <p class="text-center text-sm text-gray-600 italic">"Kapten Timnas"</p>
+                </div>
+
+                <div class="w-full sm:w-64 member-card group relative bg-green-50 border-4 border-black rounded-xl p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300">
+                    <div class="aspect-square w-full overflow-hidden rounded-lg border-2 border-black mb-4 bg-gray-200">
+                        <img src="assets/img/aryaabdul.JPG" alt="Laksamana Raihan" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-xl text-center mb-1">Arya Abdul Mughni</h3>
+                    <p class="text-center text-sm text-gray-600 italic">"C'Ustadz""</p>
+                </div>
+
+                <div class="w-full sm:w-64 member-card group relative bg-green-50 border-4 border-black rounded-xl p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300">
+                    <div class="aspect-square w-full overflow-hidden rounded-lg border-2 border-black mb-4 bg-gray-200">
+                        <img src="assets/img/hafizha.JPG" alt="Laksamana Raihan" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-xl text-center mb-1">Hafizha</h3>
+                    <p class="text-center text-sm text-gray-600 italic">"Suka Marah - Marah"</p>
+                </div>
+
+                <div class="w-full sm:w-64 member-card group relative bg-green-50 border-4 border-black rounded-xl p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300">
+                    <div class="aspect-square w-full overflow-hidden rounded-lg border-2 border-black mb-4 bg-gray-200">
+                        <img src="assets/img/hafizha.JPG" alt="Laksamana Raihan" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-xl text-center mb-1">Destyan</h3>
+                    <p class="text-center text-sm text-gray-600 italic">"Suka Marah - Marah"</p>
+                </div>
+
+                <div class="w-full sm:w-64 member-card group relative bg-green-50 border-4 border-black rounded-xl p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300">
+                    <div class="aspect-square w-full overflow-hidden rounded-lg border-2 border-black mb-4 bg-gray-200">
+                        <img src="assets/img/hafizha.JPG" alt="Laksamana Raihan" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-xl text-center mb-1">Aril</h3>
+                    <p class="text-center text-sm text-gray-600 italic">"Asli"</p>
+                </div>
+
+                <div class="w-full sm:w-64 member-card group relative bg-green-50 border-4 border-black rounded-xl p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300">
+                    <div class="aspect-square w-full overflow-hidden rounded-lg border-2 border-black mb-4 bg-gray-200">
+                        <img src="assets/img/hafizha.JPG" alt="Laksamana Raihan" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-xl text-center mb-1">Prayogi Nur Aldi</h3>
+                    <p class="text-center text-sm text-gray-600 italic">"Suka Marah - Marah"</p>
+                </div>
+
+                <div class="w-full sm:w-64 member-card group relative bg-green-50 border-4 border-black rounded-xl p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300">
+                    <div class="aspect-square w-full overflow-hidden rounded-lg border-2 border-black mb-4 bg-gray-200">
+                        <img src="assets/img/.JPG" alt="Laksamana Raihan" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-xl text-center mb-1">Asgar Maulana</h3>
+                    <p class="text-center text-sm text-gray-600 italic">"Wasit Madagascar"</p>
+                </div>
+
+                <div class="w-full sm:w-64 member-card group relative bg-gray-100 border-4 border-black rounded-xl p-4 shadow-[8px_8px_0_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300">
+                    <div class="aspect-square w-full overflow-hidden rounded-lg border-2 border-black mb-4 bg-gray-300 flex items-center justify-center">
+                        <span class="font-display text-6xl text-gray-400">?</span>
+                    </div>
+                    <h3 class="font-bold text-xl text-center mb-1">KALEM KE KABAGEAN</h3>
+                    <p class="text-center text-sm text-gray-600 italic">HIJI HIJI, CAPE</p>
+                </div>
+
+            </div>
+            
+            <div class="mt-20 flex justify-center w-full">
+                <a href="index.html" class="inline-flex items-center gap-2 bg-bflDark text-white font-bold text-xl px-10 py-4 rounded-full border-4 border-black hover:bg-bflYellow hover:text-bflDark transition-all shadow-[6px_6px_0_rgba(0,0,0,1)] hover:shadow-none hover:translate-y-1 hover:translate-x-1">
+                    <span>⬅</span> Kembali ke Home
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="bg-black text-white py-8 text-center border-t-8 border-bflRed">
+        <div class="font-display text-3xl text-bflYellow mb-4 tracking-wider">BOYS FEEL LOVED</div>
+        <p class="font-bold">© 2022 - Selamanya. Dibuat dengan cinta, kopi, dan canda tawa.</p>
+    </footer>
+
+    <script src="assets/script.js"></script>
+</body>
+</html>
