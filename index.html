@@ -17,8 +17,8 @@
             theme: {
                 extend: {
                     colors: {
-                        bflYellow: '#F9D056', // Warna kuning dari teks logo
-                        bflRed: '#F03E3E',    // Warna merah dari kacamata hati
+                        bflYellow: '#F9D056', 
+                        bflRed: '#F03E3E',    
                         bflDark: '#2D2D2D',
                     },
                     fontFamily: {
@@ -32,45 +32,100 @@
 </head>
 <body class="font-body bg-yellow-50 text-bflDark overflow-x-hidden">
 
+    <canvas id="canvas1"></canvas>
+
     <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
+                
                 <div class="flex-shrink-0 flex items-center gap-3">
                     <img src="assets/img/bfl.jpeg" alt="Logo BFL" class="h-12 w-12 rounded-full border-2 border-bflRed shadow-sm">
                     <span class="font-display text-3xl tracking-widest text-bflRed drop-shadow-md"> BOYS FEEL LOVED</span>
                 </div>
+                
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8 font-bold">
-                        <a href="#home" class="hover:text-bflRed transition-colors">Home</a>
-                        <a href="#members" class="hover:text-bflRed transition-colors">The Boys</a>
-                        <a href="#gallery" class="hover:text-bflRed transition-colors">Galeri</a>
-                        <a href="#stories" class="hover:text-bflRed transition-colors">Kisah Seru</a>
-                        <a href="#messages" class="hover:text-bflRed transition-colors">Pesan</a>
+                    <div class="relative flex items-center space-x-2 font-bold p-1">
+                        <div id="dynamic-indicator" class="dynamic-indicator"></div>
+                        
+                        <a href="#home" class="nav-link-item px-4 py-2 rounded-full transition-colors">Home</a>
+                        <a href="#members" class="nav-link-item px-4 py-2 rounded-full transition-colors">The Boys</a>
+                        <a href="#gallery" class="nav-link-item px-4 py-2 rounded-full transition-colors">Galeri</a>
+                        <a href="#stories" class="nav-link-item px-4 py-2 rounded-full transition-colors">Kisah Seru</a>
+                        <a href="#messages" class="nav-link-item px-4 py-2 rounded-full transition-colors">Pesan</a>
                     </div>
                 </div>
+
+                <div class="scale-50 origin-right">
+                    <label class="theme-switch" for="theme-toggle">
+                        <input type="checkbox" id="theme-toggle" class="theme-switch__input">
+                        <div class="theme-switch__track">
+                            <div class="theme-switch__stars"></div>
+                            <div class="shooting-star"></div>
+                            <div class="theme-switch__clouds">
+                                <div class="cloud cloud--1"></div>
+                                <div class="cloud cloud--2"></div>
+                            </div>
+                            <div class="theme-switch__orb">
+                                <div class="crater crater--1"></div>
+                                <div class="crater crater--2"></div>
+                                <div class="crater crater--3"></div>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+
             </div>
         </div>
     </nav>
 
-    <section id="home" class="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden bg-bflYellow bg-opacity-20 pattern-dots">
-        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12 relative z-10">
-            <div class="w-full md:w-1/2 text-center md:text-left">
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden bg-bflYellow bg-opacity-20 pattern-dots transition-colors duration-500">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-8 relative z-10 w-full">
+            
+            <div class="w-full md:w-1/4 flex justify-center lamp-container">
+                <svg class="lamp" viewBox="0 0 333 484" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse class="fill-opening" cx="165" cy="220" rx="130" ry="20" />
+                    <ellipse cx="165" cy="220" rx="130" ry="20" fill="url(#grad-opening)" style="opacity:calc(1 - var(--lamp-on))" />
+                    <path class="fill-base-side" d="M165 464c44.183 0 80-8.954 80-20v-14h-22.869c-14.519-3.703-34.752-6-57.131-6-22.379 0-42.612 2.297-57.131 6H85v14c0 11.046 35.817 20 80 20z" />
+                    <path d="M165 464c44.183 0 80-8.954 80-20v-14h-22.869c-14.519-3.703-34.752-6-57.131-6-22.379 0-42.612 2.297-57.131 6H85v14c0 11.046 35.817 20 80 20z" fill="url(#grad-side)" />
+                    <ellipse class="fill-base-top" cx="165" cy="430" rx="80" ry="20" />
+                    <ellipse cx="165" cy="430" rx="80" ry="20" fill="url(#grad-base)" />
+                    <path class="fill-post" d="M180 142h-30v286c0 3.866 6.716 7 15 7 8.284 0 15-3.134 15-7V142z" />
+                    <path d="M180 142h-30v286c0 3.866 6.716 7 15 7 8.284 0 15-3.134 15-7V142z" fill="url(#grad-post)" />
+                    <path id="js-cord" class="lamp-cord" d="M124 190 L124 348" stroke-width="6" stroke-linecap="round" />
+                    <path class="lamp-light" d="M290.5 193H39L0 463.5c0 11.046 75.478 20 165.5 20s167-11.954 167-23l-42-267.5z" fill="url(#grad-light)" />
+                    <path class="fill-shade" fill-rule="evenodd" clip-rule="evenodd" d="M164.859 0c55.229 0 100 8.954 100 20l29.859 199.06C291.529 208.451 234.609 200 164.859 200S38.189 208.451 35 219.06L64.859 20c0-11.046 44.772-20 100-20z" />
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M164.859 0c55.229 0 100 8.954 100 20l29.859 199.06C291.529 208.451 234.609 200 164.859 200S38.189 208.451 35 219.06L64.859 20c0-11.046 44.772-20 100-20z" fill="url(#grad-shade)" />
+                    <defs>
+                        <linearGradient id="grad-opening" x1="35" y1="220" x2="295" y2="220" gradientUnits="userSpaceOnUse"><stop /><stop offset="1" stop-opacity="0" /></linearGradient>
+                        <linearGradient id="grad-base" x1="85" y1="444" x2="245" y2="444" gradientUnits="userSpaceOnUse"><stop stop-color="var(--blend-a)" /><stop offset=".8" stop-color="var(--blend-b)" stop-opacity="0" /></linearGradient>
+                        <linearGradient id="grad-side" x1="119" y1="430" x2="245" y2="430" gradientUnits="userSpaceOnUse"><stop stop-color="var(--blend-c)" /><stop offset="1" stop-color="var(--blend-b)" stop-opacity="0" /></linearGradient>
+                        <linearGradient id="grad-post" x1="150" y1="288" x2="180" y2="288" gradientUnits="userSpaceOnUse"><stop stop-color="var(--blend-a)" /><stop offset="1" stop-color="var(--blend-b)" stop-opacity="0" /></linearGradient>
+                        <linearGradient id="grad-light" x1="165.5" y1="218.5" x2="165.5" y2="340" gradientUnits="userSpaceOnUse"><stop stop-color="var(--glow-a)" stop-opacity=".10" /><stop offset="1" stop-color="var(--glow-a)" stop-opacity="0" /></linearGradient>
+                        <linearGradient id="grad-shade" x1="56" y1="110" x2="295" y2="110" gradientUnits="userSpaceOnUse"><stop stop-color="var(--shade-l)" stop-opacity=".8" /><stop offset="1" stop-color="var(--shade-m)" stop-opacity="0" /></linearGradient>
+                    </defs>
+                    <circle id="js-hit" class="lamp-hit" cx="124" cy="348" r="60" />
+                </svg>
+            </div>
+
+            <div class="w-full md:w-2/4 text-center hero-content-toggle">
                 <h1 class="font-display text-6xl md:text-8xl text-bflRed drop-shadow-[4px_4px_0_rgba(0,0,0,1)] mb-6 transform -rotate-2">
                     BOYS FEEL LOVED!
                 </h1>
                 <p class="text-xl md:text-2xl mb-8 font-bold text-gray-800 bg-white inline-block px-4 py-2 border-4 border-black shadow-[4px_4px_0_rgba(0,0,0,1)]">
                     Teknik Informatika - Angkatan 2022
                 </p>
-                <p class="text-lg text-gray-700 mb-8 max-w-lg mx-auto md:mx-0">
+                <p class="text-lg text-gray-700 mb-8 max-w-lg mx-auto">
                     Bebas asal sopan, kawanan mahasiswa kadang nugas, kadang vertigo.
                 </p>
                 <a href="#members" class="inline-block bg-bflRed text-white font-bold text-xl px-8 py-4 rounded-full border-4 border-black hover:bg-white hover:text-bflRed transition-all shadow-[6px_6px_0_rgba(0,0,0,1)] hover:shadow-none hover:translate-y-1 hover:translate-x-1">
                     Kenalan Sama Kita 🚀
                 </a>
             </div>
-            <div class="w-full md:w-1/2 flex justify-center">
-                <img src="assets/img/bfl.jpeg" alt="Boys Feel Loved Logo" class="w-3/4 max-w-md animate-float drop-shadow-2xl">
+
+            <div class="w-full md:w-1/4 flex justify-center hero-content-toggle">
+                <img src="assets/img/bfl.jpeg" alt="Boys Feel Loved Logo" class="w-full max-w-[250px] animate-float drop-shadow-2xl rounded-3xl border-4 border-black shadow-[8px_8px_0_rgba(0,0,0,1)]">
             </div>
+
         </div>
     </section>
 

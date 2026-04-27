@@ -40,12 +40,26 @@
                     <img src="assets/img/bfl.jpeg" alt="Logo BFL" class="h-12 w-12 rounded-full border-2 border-bflRed shadow-sm">
                     <span class="font-display text-3xl tracking-widest text-bflRed drop-shadow-md"> Boys Feel Loved</span>
                 </div>
+                
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8 font-bold">
-                        <a href="index.html#home" class="hover:text-bflRed transition-colors">Home</a>
-                        <a href="index.html#gallery" class="hover:text-bflRed transition-colors">Galeri</a>
-                        <a href="index.html#stories" class="hover:text-bflRed transition-colors">Kisah Seru</a>
+                    <div class="relative flex items-center space-x-2 font-bold p-1">
+                        <div id="dynamic-indicator" class="dynamic-indicator"></div>
+                        <a href="index.html#home" class="nav-link-item px-4 py-2 rounded-full transition-colors">Home</a>
+                        <a href="index.html#gallery" class="nav-link-item px-4 py-2 rounded-full transition-colors">Galeri</a>
+                        <a href="index.html#stories" class="nav-link-item px-4 py-2 rounded-full transition-colors">Kisah Seru</a>
                     </div>
+                </div>
+
+                <div class="scale-50 origin-right">
+                    <label class="theme-switch" for="theme-toggle">
+                        <input type="checkbox" id="theme-toggle" class="theme-switch__input">
+                        <div class="theme-switch__track">
+                            <div class="theme-switch__stars"></div>
+                            <div class="shooting-star"></div>
+                            <div class="theme-switch__clouds"><div class="cloud cloud--1"></div><div class="cloud cloud--2"></div></div>
+                            <div class="theme-switch__orb"><div class="crater crater--1"></div><div class="crater crater--2"></div><div class="crater crater--3"></div></div>
+                        </div>
+                    </label>
                 </div>
             </div>
         </div>

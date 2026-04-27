@@ -22,3 +22,499 @@
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     border-bottom: 2px solid #000;
 }
+
+/* =========================================
+   Efek Magic Particle Trail (Canvas)
+   ========================================= */
+#canvas1 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Sangat penting: agar klik mouse tembus ke tombol/link di bawahnya */
+    z-index: 9999; /* Memastikan partikel ada di lapisan paling atas */
+filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7)); 
+}
+/* =========================================
+   Efek Tombol Dark Mode & Tema Gelap BFL
+   ========================================= */
+
+:root {
+  --toggle-width: 140px;
+  --toggle-height: 60px;
+  --bezel-padding: 5px;
+
+  --track-width: calc(var(--toggle-width) - (var(--bezel-padding) * 2));
+  --track-height: calc(var(--toggle-height) - (var(--bezel-padding) * 2));
+  --orb-size: calc(var(--track-height) - 10px);
+  --orb-offset: 5px;
+  --orb-travel: calc(var(--track-width) - var(--orb-size) - (var(--orb-offset) * 2));
+  --stretch-amount: 12px;
+
+  --track-bg-light: #4ba5f8;
+  --orb-bg-light: #fbbf24;
+  --orb-glow-light: rgba(251, 191, 36, 0.7);
+
+  --track-bg-dark: #12121f;
+  --orb-bg-dark: #e2e8f0;
+  --orb-glow-dark: rgba(226, 232, 240, 0.3);
+}
+
+/* --- OVERRIDE WARNA WEBSITE BFL SAAT DARK MODE --- */
+/* --- OVERRIDE WARNA WEBSITE BFL SAAT DARK MODE (TEMA UNGU GELAP) --- */
+body.dark-mode {
+    background-color: #0d0818 !important; /* Warna ungu sangat gelap untuk background utama */
+    color: #f8fafc !important;
+}
+
+body.dark-mode .bg-white,
+body.dark-mode .bg-yellow-50,
+body.dark-mode .bg-blue-50,
+body.dark-mode .bg-blue-100,
+body.dark-mode .bg-red-50,
+body.dark-mode .bg-green-50,
+body.dark-mode .bg-teal-50,
+body.dark-mode .bg-pink-50,
+body.dark-mode .bg-orange-50,
+body.dark-mode .bg-gray-100 {
+    background-color: #170e2b !important; /* Warna ungu kebiruan untuk card/kartu anggota */
+    color: #f8fafc !important;
+    border-color: #2d1b54 !important; /* Border ungu terang */
+    box-shadow: 8px 8px 0 rgba(5, 3, 10, 1) !important; /* Shadow disesuaikan jadi lebih pekat */
+}
+
+body.dark-mode p, 
+body.dark-mode h3 {
+    color: #cbd5e1 !important; /* Warna teks agak abu-abu agar tidak terlalu silau */
+}
+
+/* Mengubah warna Navbar saat di-scroll di mode malam */
+body.dark-mode .nav-scrolled {
+    background-color: rgba(13, 8, 24, 0.95) !important;
+    border-bottom: 2px solid #2d1b54 !important;
+}
+
+/* Mengubah warna kursor kustom agar cocok dengan tema ungu (Opsional, khusus mode malam) */
+body.dark-mode .custom-cursor {
+    background-color: #a855f7 !important; /* Warna ungu neon */
+    border-color: #fff !important;
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.8) !important;
+}
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------ */
+
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: var(--toggle-width);
+  height: var(--toggle-height);
+  cursor: pointer;
+  border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), inset 0 2px 4px rgba(255, 255, 255, 0.8);
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  transition: all 0.6s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body.dark-mode .theme-switch {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.1);
+  background: linear-gradient(145deg, #2a2a35, #15151c);
+}
+
+.theme-switch__input {
+  appearance: none;
+  position: absolute;
+  opacity: 0;
+}
+
+.theme-switch__track {
+  position: absolute;
+  top: var(--bezel-padding);
+  left: var(--bezel-padding);
+  width: var(--track-width);
+  height: var(--track-height);
+  border-radius: 999px;
+  background-color: var(--track-bg-light);
+  overflow: hidden;
+  box-shadow: inset 0 5px 12px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.6s ease;
+}
+
+.theme-switch__input:checked ~ .theme-switch__track {
+  background-color: var(--track-bg-dark);
+}
+
+.theme-switch__orb {
+  position: absolute;
+  top: var(--orb-offset);
+  left: var(--orb-offset);
+  width: var(--orb-size);
+  height: var(--orb-size);
+  border-radius: 50%;
+  background-color: var(--orb-bg-light);
+  box-shadow: inset -4px -4px 8px rgba(180, 83, 9, 0.5), inset 3px 3px 6px rgba(255, 255, 255, 0.8), 0 0 20px var(--orb-glow-light);
+  transition: transform 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55), width 0.4s ease, background-color 0.6s ease;
+  z-index: 20;
+}
+
+.theme-switch__input:checked ~ .theme-switch__track .theme-switch__orb {
+  transform: translateX(var(--orb-travel)) rotate(360deg);
+  background-color: var(--orb-bg-dark);
+  box-shadow: inset -3px -3px 6px rgba(0, 0, 0, 0.3), inset 3px 3px 6px rgba(255, 255, 255, 0.8), 0 0 15px var(--orb-glow-dark);
+}
+
+.theme-switch__input:active ~ .theme-switch__track .theme-switch__orb {
+  width: calc(var(--orb-size) + var(--stretch-amount));
+}
+
+.theme-switch__input:checked:active ~ .theme-switch__track .theme-switch__orb {
+  transform: translateX(calc(var(--orb-travel) - var(--stretch-amount))) rotate(360deg);
+}
+
+.crater {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.crater--1 { top: 20%; left: 20%; width: 25%; height: 25%; }
+.crater--2 { bottom: 25%; right: 20%; width: 15%; height: 15%; }
+.crater--3 { top: 40%; right: 35%; width: 10%; height: 10%; }
+
+.theme-switch__input:checked ~ .theme-switch__track .crater { opacity: 1; }
+
+.theme-switch__clouds {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease, opacity 0.4s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  z-index: 10;
+}
+
+.cloud { position: absolute; background: #fff; border-radius: 50px; }
+.cloud::before, .cloud::after { content: ""; position: absolute; background: #fff; border-radius: 50%; }
+
+.cloud--1 { width: 35px; height: 12px; bottom: 15%; right: 10%; animation: cloud-float 4s ease-in-out infinite; }
+.cloud--1::before { width: 18px; height: 18px; top: -10px; left: 6px; }
+.cloud--1::after { width: 12px; height: 12px; top: -5px; right: 4px; }
+
+.cloud--2 { width: 25px; height: 10px; bottom: 30%; left: 35%; opacity: 0.7; animation: cloud-float 5s ease-in-out infinite reverse; }
+.cloud--2::before { width: 14px; height: 14px; top: -8px; left: 4px; }
+.cloud--2::after { width: 10px; height: 10px; top: -4px; right: 3px; }
+
+.theme-switch__input:checked ~ .theme-switch__track .theme-switch__clouds { transform: translateY(40px); opacity: 0; }
+
+.theme-switch__stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.6s ease;
+}
+
+.theme-switch__stars::before, .theme-switch__stars::after {
+  content: ""; position: absolute; background: #fff; border-radius: 50%;
+}
+
+.theme-switch__stars::before {
+  width: 2px; height: 2px;
+  box-shadow: 20px 10px #fff, 40px 25px rgba(255, 255, 255, 0.6), 75px 12px #fff;
+  animation: twinkle 3s infinite alternate;
+}
+
+.theme-switch__input:checked ~ .theme-switch__track .theme-switch__stars { opacity: 1; transform: translateY(0); }
+
+.shooting-star {
+  position: absolute; top: 15%; right: 20%; width: 35px; height: 1px;
+  background: linear-gradient(to right, transparent, #fff);
+  transform: rotate(-45deg) translateX(100px); opacity: 0;
+}
+
+.theme-switch__input:checked ~ .theme-switch__track .shooting-star { animation: shoot 5s infinite 2s; }
+
+@keyframes cloud-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+@keyframes twinkle { 0% { opacity: 0.3; } 100% { opacity: 1; } }
+@keyframes shoot { 0% { transform: rotate(-45deg) translateX(80px); opacity: 0; } 5% { transform: rotate(-45deg) translateX(0px); opacity: 1; } 10%, 100% { transform: rotate(-45deg) translateX(-80px); opacity: 0; } }
+/* =========================================
+   Efek Lampu Tarik & Animasi Hero (Mode Malam)
+   ========================================= */
+:root {
+    --lamp-on: 0; /* Default 0 (Mati) */
+    
+    /* Warna komponen lampu - disesuaikan dengan tema ungu */
+    --opening: hsl(270, calc((10 + var(--lamp-on) * 70) * 1%), calc((18 + var(--lamp-on) * 68) * 1%));
+    --base-top: hsl(270, calc(var(--lamp-on) * 25%), calc((30 + var(--lamp-on) * 38) * 1%));
+    --base-side: hsl(270, calc(var(--lamp-on) * 25%), calc((15 + var(--lamp-on) * 35) * 1%));
+    --post: hsl(270, calc(var(--lamp-on) * 20%), calc((18 + var(--lamp-on) * 35) * 1%));
+    --shade-l: hsl(270, calc(var(--lamp-on) * 35%), calc((28 + var(--lamp-on) * 55) * 1%));
+    --shade-m: hsl(270, calc(var(--lamp-on) * 35%), calc((16 + var(--lamp-on) * 32) * 1%));
+    --shade-d: hsl(270, calc(var(--lamp-on) * 35%), calc((9 + var(--lamp-on) * 18) * 1%));
+    --blend-a: hsla(270, calc(var(--lamp-on) * 30%), calc((45 + var(--lamp-on) * 50) * 1%), 0.85);
+    --blend-b: hsla(270, calc(var(--lamp-on) * 30%), calc((18 + var(--lamp-on) * 28) * 1%), 0.25);
+    --blend-c: hsla(270, calc(var(--lamp-on) * 30%), calc((18 + var(--lamp-on) * 28) * 1%), 0.50);
+    --glow-a: hsla(270, calc(var(--lamp-on) * 40%), calc((40 + var(--lamp-on) * 55) * 1%), 0.85);
+    --cord-l: calc((38 + var(--lamp-on) * 52) * 1%);
+}
+
+/* 1. Sembunyikan Lampu di Siang Hari */
+/* 1. Sembunyikan Lampu di Siang Hari (DIPERBAIKI) */
+.lamp-container {
+    display: none !important;
+}
+
+body.dark-mode .lamp-container {
+    display: flex !important;
+}
+
+/* 2. Logika Muncul/Hilang Konten Hero */
+/* Saat siang, teks & logo terlihat normal */
+body:not(.dark-mode) .hero-content-toggle {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Saat malam, teks & logo bersembunyi (opacity 0) jika lampu mati, dan muncul jika lampu nyala */
+body.dark-mode .hero-content-toggle {
+    opacity: var(--lamp-on);
+    transform: translateY(calc((1 - var(--lamp-on)) * 20px));
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+    pointer-events: calc(var(--lamp-on) * auto);
+}
+
+/* 3. Style SVG Lampu */
+.lamp { height: 40vmin; min-height: 250px; max-height: 350px; overflow: visible !important; flex-shrink: 0; }
+.lamp-cord { stroke: hsl(270, 0%, var(--cord-l)); transition: stroke .1s; }
+.lamp-light { opacity: var(--lamp-on); transition: opacity 0.5s ease; }
+.fill-opening { fill: var(--opening); transition: fill 0.5s ease; }
+.fill-base-top { fill: var(--base-top); transition: fill 0.5s ease; }
+.fill-base-side { fill: var(--base-side); transition: fill 0.5s ease; }
+.fill-post { fill: var(--post); transition: fill 0.5s ease; }
+.fill-shade { fill: var(--shade-d); transition: fill 0.5s ease; }
+.lamp-hit { cursor: grab; fill: transparent; }
+.lamp-hit:active { cursor: grabbing; }
+
+/* 4. Cahaya Ruangan dari Lampu */
+body.dark-mode::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse 50% 65% at 30% 50%, rgba(100, 20, 180, .25) 0%, rgba(40, 5, 80, .05) 52%, transparent 75%);
+    opacity: var(--lamp-on);
+    transition: opacity .9s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+/* =========================================
+   EFEK NEON HERO SECTION (KHUSUS MODE MALAM)
+   ========================================= */
+
+/* 1. Ubah background menjadi sangat gelap & hilangkan titik-titik kuning */
+body.dark-mode {
+    background-color: #0b0510 !important; /* Warna hitam keunguan sangat pekat */
+}
+
+body.dark-mode #home {
+    background-color: transparent !important;
+    background-image: none !important; /* Menghilangkan pola pattern-dots */
+}
+
+/* 2. Efek Neon pada Judul (Kedap-kedip & Percikan Api) */
+body.dark-mode .hero-content-toggle h1 {
+    position: relative; /* Penting agar percikan api tidak keluar dari area teks */
+    color: #ffb3b3 !important; /* Warna teks agak putih kemerahan di tengah */
+    filter: drop-shadow(0 0 0 transparent) !important;
+    animation: broken-neon 4s infinite !important; /* Menjalankan animasi kedap-kedip */
+}
+
+/* Animasi Kedap-Kedip seperti lampu neon rusak */
+@keyframes broken-neon {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        text-shadow: 
+            0 0 5px #fff,
+            0 0 10px #ff4d4d,
+            0 0 20px #ff4d4d,
+            0 0 40px #ff0000,
+            0 0 80px #ff0000;
+        opacity: 1;
+    }
+    20%, 22%, 24%, 55% {
+        text-shadow: 0 0 5px #ff4d4d;
+        opacity: 0.4; /* Redup tiba-tiba */
+    }
+}
+
+/* Style untuk Partikel Listrik (Korslet) */
+.electric-spark {
+    position: absolute;
+    width: 2px;
+    height: 15px; /* Bentuk memanjang seperti kilat */
+    background-color: #ffffff; /* Inti putih terang */
+    box-shadow: 0 0 5px #00ffff, 0 0 10px #00aaff, 0 0 20px #0055ff; /* Glow biru/cyan listrik */
+    pointer-events: none;
+    opacity: 0;
+    z-index: 20;
+}
+
+/* Animasi Listrik Zig-zag dan Kilat sangat cepat */
+@keyframes electric-zap {
+    0% { transform: translate(0, 0) scale(1) rotate(var(--rot)); opacity: 1; }
+    25% { transform: translate(calc(var(--dir-x) * 15px), calc(var(--dir-y) * -10px)) scale(1.5) rotate(calc(var(--rot) + 30deg)); opacity: 0.8; }
+    50% { transform: translate(calc(var(--dir-x) * -10px), calc(var(--dir-y) * 20px)) scale(0.5) rotate(calc(var(--rot) - 45deg)); opacity: 1; }
+    75% { transform: translate(calc(var(--dir-x) * 25px), calc(var(--dir-y) * -25px)) scale(1.2) rotate(calc(var(--rot) + 60deg)); opacity: 0.4; }
+    100% { transform: translate(calc(var(--dir-x) * 30px), calc(var(--dir-y) * 30px)) scale(0) rotate(calc(var(--rot) - 90deg)); opacity: 0; }
+}
+
+/* 3. Efek Neon pada Kotak Teks "Teknik Informatika" */
+body.dark-mode .hero-content-toggle p.bg-white {
+    background-color: #170e2b !important;
+    border-color: #a855f7 !important; /* Border ungu neon */
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.6) !important; /* Cahaya ungu memancar */
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4) !important;
+}
+
+/* 4. Efek Neon pada Logo BFL di Sebelah Kanan */
+body.dark-mode .hero-content-toggle img {
+    border-color: #a855f7 !important; /* Border ungu neon */
+    box-shadow: 
+        0 0 20px rgba(168, 85, 247, 0.8), 
+        0 0 40px rgba(168, 85, 247, 0.6), 
+        0 0 60px rgba(168, 85, 247, 0.4) !important; /* Cahaya neon bertingkat */
+}
+
+/* 5. Efek Neon pada Tombol "Kenalan Sama Kita" */
+body.dark-mode .hero-content-toggle a {
+    box-shadow: 0 0 20px rgba(240, 62, 62, 0.6) !important; /* Cahaya neon merah */
+    border-color: #ff4d4d !important;
+}
+/* =========================================
+   DESAIN NAVBAR MELENGKUNG (CENTER NOTCH)
+   ========================================= */
+
+/* Latar Belakang Navbar Dasar */
+#navbar {
+    background-color: rgba(255, 255, 255, 0.95);
+    /* HAPUS border-bottom di sini agar tidak memotong lengkungan notch */
+    border-bottom: none !important; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Gunakan shadow lembut sebagai gantinya */
+}
+
+/* Teks Menu Siang */
+.nav-links a {
+    color: #2D2D2D; 
+}
+
+/* Bentuk Kotak Tengah (Notch) */
+.nav-notch {
+    background-color: #2D2D2D;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    pointer-events: none; /* Agar klik tembus ke menu di bawahnya */
+    transition: left 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55), 
+                width 0.4s ease,
+                background-color 0.6s ease;
+    z-index: 10;
+}
+
+/* Sisi lengkungan notch (Efek mulus Inverse Border-Radius) */
+.nav-notch::before, .nav-notch::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+}
+.nav-notch::before {
+    left: -30px;
+    border-top-right-radius: 30px;
+    /* Bayangan ditarik lebih dalam agar menutupi celah sekecil apapun */
+    box-shadow: 15px -15px 0 0 #2D2D2D; 
+}
+.nav-notch::after {
+    right: -30px;
+    border-top-left-radius: 30px;
+    box-shadow: -15px -15px 0 0 #2D2D2D;
+}
+
+/* -----------------------------------------
+   PERUBAHAN SAAT MODE MALAM (DARK MODE)
+   ----------------------------------------- */
+
+body.dark-mode #navbar {
+    background-color: rgba(13, 8, 24, 0.95) !important;
+    border-bottom: none !important; /* Pastikan tidak ada border di mode malam */
+}
+
+body.dark-mode .nav-links a {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .nav-notch {
+    background-color: #a855f7 !important; /* Warna Ungu Neon */
+    box-shadow: 0 10px 25px rgba(168, 85, 247, 0.4);
+}
+
+body.dark-mode .nav-notch::before { 
+    box-shadow: 15px -15px 0 0 #a855f7 !important; 
+}
+body.dark-mode .nav-notch::after { 
+    box-shadow: -15px -15px 0 0 #a855f7 !important; 
+}
+/* =========================================
+   STYLING NAVBAR (MODE SIANG & MALAM)
+   ========================================= */
+#navbar {
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+/* Teks Menu Siang (Hitam) */
+.nav-link-item {
+    color: #2D2D2D !important;
+    position: relative;
+    z-index: 2; /* Di atas indikator */
+    transition: color 0.3s ease;
+}
+
+/* Indikator Hitam Meluncur */
+.dynamic-indicator {
+    position: absolute;
+    height: 100%;
+    background-color: #2D2D2D;
+    border-radius: 9999px;
+    z-index: 0; /* Di belakang teks */
+    pointer-events: none; /* Klik tembus ke link */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Saat teks ada di atas indikator (Teks jadi putih) */
+.nav-link-item.text-white {
+    color: #ffffff !important; 
+}
+
+/* =========================================
+   PERUBAHAN SAAT MODE MALAM
+   ========================================= */
+body.dark-mode #navbar {
+    background-color: rgba(13, 8, 24, 0.95) !important;
+    border-bottom-color: #2d1b54 !important;
+}
+
+body.dark-mode .nav-link-item {
+    color: #f8fafc !important; /* Teks default malam jadi putih */
+}
+
+body.dark-mode .dynamic-indicator {
+    background-color: #a855f7 !important; /* Indikator ungu neon */
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.6);
+}
+
+body.dark-mode .nav-link-item.text-white {
+    color: #ffffff !important; 
+}
