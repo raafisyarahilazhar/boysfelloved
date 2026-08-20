@@ -518,3 +518,40 @@ body.dark-mode .dynamic-indicator {
 body.dark-mode .nav-link-item.text-white {
     color: #ffffff !important; 
 }
+
+/* =========================================
+   PERBAIKAN DARK MODE halaman the_boys.html
+   ========================================= */
+/* Semua kartu anggota ikut tema gelap, apa pun warna Tailwind bg-* yang dipakai */
+body.dark-mode .member-card {
+    background-color: #170e2b !important;
+    color: #f8fafc !important;
+    border-color: #2d1b54 !important;
+    box-shadow: 8px 8px 0 rgba(5, 3, 10, 1) !important;
+}
+
+/* Kotak placeholder foto (bg-gray-200 / bg-gray-300) ikut gelap */
+body.dark-mode .bg-gray-200,
+body.dark-mode .bg-gray-300 {
+    background-color: #241538 !important;
+}
+
+/* Tanda "?" pada anggota tanpa foto ikut terlihat di tema gelap */
+body.dark-mode .text-gray-400 {
+    color: #a78bfa !important;
+}
+
+/* Band hero the_boys.html (& section pattern-dots lainnya) ikut gelap,
+   titik-titiknya diwarnai ulang agar senada dengan tema ungu */
+body.dark-mode section.pattern-dots {
+    background-color: #170e2b !important;
+    background-image: radial-gradient(#2d1b54 2px, transparent 2px) !important;
+    border-color: #2d1b54 !important;
+}
+
+/* Judul hero the_boys.html dapat efek neon sama seperti di index */
+body.dark-mode section.pattern-dots h1 {
+    color: #ffb3b3 !important;
+    filter: drop-shadow(0 0 0 transparent) !important;
+    animation: broken-neon 4s infinite !important;
+}
